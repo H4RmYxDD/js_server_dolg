@@ -1,10 +1,11 @@
-import express from 'express';
-import { fileURLToPath } from 'url';
-const app = express();
-const movieRoutes = import('./routes/movies.Routes');
-app.use(express.json());
-app.use('/api', movieRoutes);
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () =>{
-    console.log(`server is running on port ${PORT}`);
+import express from 'express'
+import movieRoutes from './routes/movies.Routes.js'
+
+const app = express()
+
+app.use(express.json())
+app.use('/', movieRoutes)
+
+app.listen(3000, () => {
+    console.log('Server runs')
 })

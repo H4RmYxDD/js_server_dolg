@@ -1,9 +1,8 @@
-import movies from "../data/movies.js"
-const { default: router } = require('../routes/movies.Routes');
+import movies from "../data.js"
 
-export const getAllMovies = (req, res => {
+export const getAllMovies = (req, res) => {
     res.status(200).json(movies);
-})
+}
 
 export const getMovieById = (req, res) => {
     const movieId = parseInt(req.params.id);
@@ -53,12 +52,4 @@ export const deleteMovie = (req, res) =>{
     }
     movies.splice(MovieIndex, 1);
     res.status(204).end();
-};
-
-module.exports = {
-    getAllMovies,
-    getMovieById,
-    addMovie,
-    updateMovie,
-    deleteMovie
 };

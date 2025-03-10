@@ -1,12 +1,12 @@
 import express from "express"
 
-import { addMovie, deleteMovie, getAllMovies, getAllbooksByid, updateMovie } from "../controllers/moviecontrollers.js"
+import { addMovie, deleteMovie, getAllMovies, getMovieById, updateMovie } from "../controllers/moviecontrollers.js"
 
 const router = express.Router()
 
 router.get('/', getAllMovies)
 
-router.get('/:id', getAllbooksByid)
+router.get('/:id', getMovieById)
 
 router.post('/', addMovie)
 
