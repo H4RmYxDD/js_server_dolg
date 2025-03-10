@@ -1,11 +1,11 @@
-const movies = require ('data.js');
+import movies from "../data/movies.js"
 const { default: router } = require('../routes/movies.Routes');
 
-const getAllMovies = (req, res => {
+export const getAllMovies = (req, res => {
     res.status(200).json(movies);
 })
 
-const getMovieById = (req, res) => {
+export const getMovieById = (req, res) => {
     const movieId = parseInt(req.params.id);
     const movie = movies.find(m=>m.id===movieId);
     if (!movie){
@@ -14,7 +14,7 @@ const getMovieById = (req, res) => {
     res.status(200).json(movie);
 }
 
-const addMovie = (req, res) => {
+export const addMovie = (req, res) => {
     const {title, director, releaseYear, wonOscar} = req.body;
     const newMovie = {
         id: movies.count+1,
@@ -27,7 +27,7 @@ const addMovie = (req, res) => {
     res.status(201).json(newMovie)
 }
 
-const updateMovie = (req, res) =>{
+export const updateMovie = (req, res) =>{
     const movieId = parseInt(req.params.id);
     const {title, director, releaseYear, wonOscar}=req.body;
     const MovieIndex = movies.findIndex(m => m.id===movieId);
@@ -45,7 +45,7 @@ const updateMovie = (req, res) =>{
     res.status(200).json(updateMovie);
 };
 
-const deleteMovie = (req, res) =>{
+export const deleteMovie = (req, res) =>{
     const movieId = parseInt(req.params.id);
     const MovieIndex = movies.findIndex(m => m.id ===movieId);
     if (MovieIndex ===-1){
